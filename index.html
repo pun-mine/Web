@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>เข้าสู่ระบบ | YourAppName</title>
+
+  <!-- ฟอนต์ Noto Sans Thai -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #007bff;
+      --primary-hover-color: #0056b3;
+      --text-color: #333;
+      --background-color: #f4f7f6;
+      --container-bg-color: #ffffff;
+      --border-color: #ddd;
+      --error-color: #dc3545;
+    }
+
+    body {
+      font-family: 'Noto Sans Thai', sans-serif;
+      margin: 0;
+      background-color: var(--background-color);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 420px;
+      padding: 20px;
+    }
+
+    .login-box {
+      background-color: var(--container-bg-color);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h2 {
+      color: var(--text-color);
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      box-sizing: border-box;
+      transition: border-color 0.3s;
+    }
+
+    .input-group input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 38px;
+      cursor: pointer;
+    }
+
+    .toggle-password img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .options {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    .forgot-password {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .forgot-password:hover {
+      text-decoration: underline;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover-color);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 25px 0;
+      color: #aaa;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .divider span {
+      padding: 0 10px;
+    }
+
+    .btn-google {
+      background-color: #fff;
+      color: #444;
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-google img {
+      width: 18px;
+      height: 18px;
+    }
+
+    .signup-link {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .signup-link a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+
+    .error-message {
+      color: var(--error-color);
+      margin-top: 15px;
+      font-size: 14px;
+      min-height: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="login-box">
+      <h2>เข้าสู่ระบบ</h2>
+      <p class="subtitle">ยินดีต้อนรับกลับมา! กรุณาลงชื่อเข้าใช้บัญชีของคุณ</p>
+
+      <form id="login-form">
+        <div class="input-group">
+          <label for="email">อีเมล</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="input-group">
+          <label for="password">รหัสผ่าน</label>
+          <input type="password" id="password" name="password" required>
+          <span class="toggle-password">
+            <img id="eye-icon" src="https://cdn-icons-png.flaticon.com/512/2767/2767194.png" alt="show">
+          </span>
+        </div>
+
+        <div class="options">
+          <a href="#" class="forgot-password">ลืมรหัสผ่าน?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>
+      </form>
+
+      <div class="divider"><span>หรือ</span></div>
+
+      <button type="button" class="btn btn-google" id="google-login">
+        <img src="https://www.google.com/favicon.ico" alt="Google icon">
+        เข้าสู่ระบบด้วย Google
+      </button>
+
+      <p class="signup-link">
+        ยังไม่มีบัญชี? <a href="#">สมัครสมาชิก</a>
+      </p>
+
+      <p id="error-message" class="error-message"></p>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+
+  <script>
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyBNaDl-hPhbYZlOVnY4Jlv9OYBF7X741ns",
+      authDomain: "webkk-cf8fc.firebaseapp.com",
+      projectId: "webkk-cf8fc",
+      storageBucket: "webkk-cf8fc.appspot.com",
+      messagingSenderId: "442086505993",
+      appId: "1:442086505993:web:abe1aac8fe605c4fe342d8",
+      measurementId: "G-H2K5KL8N05"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    const auth = firebase.auth();
+    const loginForm = document.getElementById("login-form");
+    const errorMessage = document.getElementById("error-message");
+
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = loginForm.email.value;
+      const password = loginForm.password.value;
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          location.href = "dashboard.html";
+        })
+        .catch((error) => {
+          errorMessage.textContent = error.message;
+        });
+    });
+
+    // แสดง/ซ่อนรหัสผ่าน
+    const passwordInput = document.getElementById("password");
+    const eyeIcon = document.getElementById("eye-icon");
+    let isShown = false;
+
+    document.querySelector(".toggle-password").addEventListener("click", () => {
+      isShown = !isShown;
+      passwordInput.type = isShown ? "text" : "password";
+      eyeIcon.src = isShown
+        ? "https://cdn-icons-png.flaticon.com/512/4855/4855030.png"
+        : "https://cdn-icons-png.flaticon.com/512/2767/2767194.png";
+    });
+
+    // Google Login
+    document.getElementById("google-login").addEventListener("click", () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider)
+        .then(() => {
+          location.href = "dashboard.html";
+        })
+        .catch((error) => {
+          errorMessage.textContent = error.message;
+        });
+    });
+  </script>
+
+</body>
+</html>
